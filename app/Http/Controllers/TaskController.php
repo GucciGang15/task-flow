@@ -89,6 +89,13 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect()->route('tasks.index');
+    }
+
+    public function complete(Task $task)
+    {
+        $task->update(['completed' => true]);
+        return redirect()->route('tasks.index');
     }
 }
